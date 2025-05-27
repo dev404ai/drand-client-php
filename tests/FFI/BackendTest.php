@@ -42,6 +42,9 @@ final class BackendTest extends TestCase
      */
     public function testPhpBackendThrowsIfNoGmp(): void
     {
+        if (extension_loaded('gmp')) {
+            self::markTestSkipped('GMP extension is enabled; cannot test missing GMP exception.');
+        }
         $backend = new PhpGmpBackend();
         $this->expectException(\Drand\Client\Exception\VerificationUnavailableException::class);
         $backend->verify(str_repeat("\0", 48), str_repeat("\0", 8), str_repeat("\0", 96), SignatureScheme::PEDERSEN_BLS_CHAINED);
