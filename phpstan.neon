@@ -1,0 +1,38 @@
+# phpstan.neon — base configuration (English comments)
+
+includes:
+    # Strict rules for library code
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
+    # Warn about usage of deprecated APIs
+    - vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    # Better PHPUnit support
+    - vendor/phpstan/phpstan-phpunit/extension.neon
+
+########################################################################
+# Main analysis parameters                                             #
+########################################################################
+parameters:
+    # Analysis level (0-9 or "max"). Start lower if "max" is overwhelming
+    level: max
+
+    # Directories to analyse
+    paths:
+        - src
+        - tests            # remove if you don't want to analyse tests
+
+    # Directories / files to exclude
+    excludePaths:
+        - vendor
+        - tests/fixtures
+
+    # Quality-of-life flags
+    inferPrivatePropertyTypeFromConstructor: true
+    reportUnmatchedIgnoredErrors: true
+    checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: true
+
+    # Autoload file (Composer)
+    bootstrapFiles:
+        - vendor/autoload.php
+
+

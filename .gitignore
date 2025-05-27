@@ -1,0 +1,43 @@
+# Composer dependencies
+/vendor/
+
+# PHPUnit
+.phpunit.result.cache
+
+# PHPUnit coverage reports
+/coverage/
+/clover.xml
+/junit.xml
+/testdox.xml
+
+# Infection mutation testing
+/infection.log
+/infection-details.log
+
+# PHPStan, Psalm, and other static analysis tools
+/phpstan.cache
+/psalm-cache/
+/psalm.xml.cache
+
+# IDE and editor folders
+/.idea/
+/.vscode/
+/nbproject/
+/*.sublime-workspace
+/*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# User-specific files
+*.swp
+*.swo
+_locale
+
+# Build artifacts
+/build/
+/dist/

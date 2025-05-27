@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php">
+    <testsuites>
+        <testsuite name="default">
+            <directory suffix="Test.php">tests</directory>
+            <exclude>tests/FFI</exclude>
+        </testsuite>
+        <testsuite name="ffi">
+            <directory suffix="Test.php">tests/FFI</directory>
+        </testsuite>
+    </testsuites>
+    <coverage>
+        <!-- Removed <include> for PHPUnit 10+ compatibility -->
+    </coverage>    
+</phpunit>
