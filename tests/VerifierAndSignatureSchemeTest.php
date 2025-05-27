@@ -67,24 +67,20 @@ final class VerifierAndSignatureSchemeTest extends TestCase
         $beacon = Beacon::fromArray([
             'round' => 1,
             'randomness' => str_repeat('00', 32),
-            'signature' => str_repeat('00', 48), // 48 bytes hex (96 chars)
+            'signature' => str_repeat('00', 48),
         ]);
         $chain = Chain::fromArray([
-            'public_key' => str_repeat('00', 96), // 96 bytes hex (192 chars)
+            'public_key' => str_repeat('00', 96),
             'period' => 30,
             'genesis_time' => 1000,
             'hash' => 'h',
             'groupHash' => 'g',
-            'schemeID' => SignatureScheme::PEDERSEN_BLS_CHAINED->value,
+            'schemeID' => SignatureScheme::BLS_UNCHAINED_G1->value,
             'beaconID' => 'mainnet',
             'metadata' => ['beaconID' => 'mainnet']
         ]);
-        try {
-            $verifier->verify($beacon, $chain);
-            self::fail('Expected exception was not thrown');
-        } catch (\Drand\Client\Exception\VerificationUnavailableException | \FFI\Exception $e) {
-            self::assertInstanceOf(\Drand\Client\Exception\VerificationUnavailableException::class, $e);
-        }
+        $this->expectException(\Drand\Client\Exception\VerificationUnavailableException::class);
+        $verifier->verify($beacon, $chain);
     }
 
     /**
