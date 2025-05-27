@@ -20,10 +20,12 @@ jobs:
       # Сборка и установка BLST
       - name: Build and install BLST
         run: |
-          git clone https://github.com/supranational/blst.git
+          git clone --depth 1 https://github.com/supranational/blst.git
           cd blst
-          make
-          sudo cp lib/libblst.so /usr/lib/
+          ./build.sh -shared        # or: make -C build
+          sudo install -m755 libblst.so /usr/lib/
+          sudo install -m644 bindings/blst.h /usr/include/
+          sudo ldconfig
           cd ..
 
       - name: Set up PHP
