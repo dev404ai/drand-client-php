@@ -84,6 +84,10 @@ final class FFIBlstBackend implements VerifierBackendInterface
         if (!$this->supportsScheme($scheme)) {
             throw new \InvalidArgumentException("Unsupported signature scheme: $scheme->value");
         }
+        // Input validation: throw if any input is empty
+        if ($signature === '' || $message === '' || $publicKey === '') {
+            throw new \InvalidArgumentException('Signature, message, and publicKey must not be empty');
+        }
         $isG1 = $scheme->isG1Scheme();
         $dst = $scheme->getDST();
 

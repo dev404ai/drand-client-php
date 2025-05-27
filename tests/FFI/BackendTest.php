@@ -199,6 +199,7 @@ final class BackendTest extends TestCase
      * Test PhpGmpBackend verify with random data.
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testPhpGmpBackendVerifyWithRandomData(): void
     {
@@ -216,6 +217,7 @@ final class BackendTest extends TestCase
      * Test PhpGmpBackend verify with all zero data.
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testPhpGmpBackendVerifyWithAllZeroData(): void
     {
@@ -248,6 +250,7 @@ final class BackendTest extends TestCase
      * Fuzz test for PhpGmpBackend verify with random inputs.
      *
      * @return void
+     * @doesNotPerformAssertions
      */
     public function testPhpGmpBackendFuzzInputs(): void
     {

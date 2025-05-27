@@ -83,7 +83,7 @@ final class DrandClient
      *
      * @param int $round
      * @return Beacon
-     * @throws \InvalidArgumentException If the beacon is invalid or verification fails
+     * @throws VerificationUnavailableException If the beacon is invalid or verification fails
      */
     /** @psalm-suppress PossiblyUnusedMethod */
     public function getBeacon(int $round): Beacon
@@ -92,7 +92,7 @@ final class DrandClient
         if ($this->options['verificationMode'] === VerificationMode::ENABLED) {
             $chain = $this->getChain();
             if (!$this->verifier->verify($beacon, $chain) || !$this->verifier->verifyRandomness($beacon)) {
-                throw new \InvalidArgumentException('Invalid beacon signature or randomness');
+                throw new VerificationUnavailableException('Invalid beacon signature or randomness');
             }
         }
         return $beacon;
@@ -102,7 +102,7 @@ final class DrandClient
      * Get the latest beacon. Optionally verifies the beacon signature and randomness.
      *
      * @return Beacon
-     * @throws \InvalidArgumentException If the beacon is invalid or verification fails
+     * @throws VerificationUnavailableException If the beacon is invalid or verification fails
      */
     /** @psalm-suppress PossiblyUnusedMethod */
     public function getLatestBeacon(): Beacon
@@ -111,7 +111,7 @@ final class DrandClient
         if ($this->options['verificationMode'] === VerificationMode::ENABLED) {
             $chain = $this->getChain();
             if (!$this->verifier->verify($beacon, $chain) || !$this->verifier->verifyRandomness($beacon)) {
-                throw new \InvalidArgumentException('Invalid beacon signature or randomness');
+                throw new VerificationUnavailableException('Invalid beacon signature or randomness');
             }
         }
         return $beacon;

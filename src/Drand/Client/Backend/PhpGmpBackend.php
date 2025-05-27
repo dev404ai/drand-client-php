@@ -60,6 +60,11 @@ class PhpGmpBackend implements VerifierBackendInterface
             );
         }
 
+        // Input validation: throw if any input is empty
+        if ($signature === '' || $message === '' || $publicKey === '') {
+            throw new \InvalidArgumentException('Signature, message, and publicKey must not be empty');
+        }
+
         // Convert binary inputs to GMP numbers
         $sig = gmp_import($signature);
         $msg = gmp_import($message);
