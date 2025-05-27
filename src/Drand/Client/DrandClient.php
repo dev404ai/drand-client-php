@@ -161,7 +161,7 @@ final class DrandClient
      * @param Verifier $verifier The verifier instance to use
      * @param array<string, mixed> $options Client options
      * @return static
-     * 
+     *
      * @psalm-suppress PossiblyUnusedMethod
      */
     public static function createMultiChain(array $clients, Verifier $verifier, array $options = []): static

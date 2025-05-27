@@ -28,7 +28,7 @@ final class Verifier
      *
      * @param array<string, VerifierBackendInterface> $backends
      * @throws \InvalidArgumentException If no backends are provided
-     * 
+     *
      * @psalm-suppress PossiblyUnusedMethod
      */
     public function __construct(array $backends)
