@@ -22,7 +22,7 @@ jobs:
         run: |
           git clone https://github.com/supranational/blst.git
           cd blst/src
-          make libblst.so
+          make shared
           sudo cp libblst.so /usr/lib/
           cd ../..
 
