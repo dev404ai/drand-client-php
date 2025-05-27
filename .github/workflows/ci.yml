@@ -13,10 +13,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Установка зависимостей для сборки BLST
+      - name: Install build dependencies
+        run: sudo apt-get update && sudo apt-get install -y build-essential git
+
+      # Сборка и установка BLST
+      - name: Build and install BLST
+        run: |
+          git clone https://github.com/supranational/blst.git
+          cd blst
+          make
+          sudo cp libblst.so /usr/lib/
+          cd ..
+
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+          extensions: ffi, gmp
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
