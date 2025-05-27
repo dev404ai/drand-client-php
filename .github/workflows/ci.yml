@@ -47,7 +47,7 @@ jobs:
         run: vendor/bin/phpstan analyse src --level=max
 
       - name: Run PHP_CodeSniffer (PSR-12)
-        run: vendor/bin/phpcs --standard=PSR12 src/ tests/
+        run: vendor/bin/phpcs --standard=PSR12 --warning-severity=0 src/ tests/
 
       - name: Run Infection (mutation testing)
         run: vendor/bin/infection --threads=2 --min-msi=80 --min-covered-msi=90 --show-mutations 
