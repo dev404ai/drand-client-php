@@ -21,10 +21,10 @@ jobs:
       - name: Build and install BLST
         run: |
           git clone https://github.com/supranational/blst.git
-          cd blst/src
-          make shared
+          cd blst
+          make libblst.so
           sudo cp libblst.so /usr/lib/
-          cd ../..
+          cd ..
 
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
