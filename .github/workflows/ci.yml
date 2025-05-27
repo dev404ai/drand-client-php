@@ -22,8 +22,8 @@ jobs:
         run: |
           git clone https://github.com/supranational/blst.git
           cd blst
-          make libblst.so
-          sudo cp libblst.so /usr/lib/
+          make
+          sudo cp lib/libblst.so /usr/lib/
           cd ..
 
       - name: Set up PHP
